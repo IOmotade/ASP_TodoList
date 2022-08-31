@@ -115,11 +115,16 @@ class App extends Component<any, States> {
     return (
       <div className="todo-container">
         <div className="todo-wrap">
-          <TaskBar addTodo={this.addTodo} />
-          <SortOptions
-            options={["name", "date", "priority level"]}
-            sortTodo={this.sortTodo}
-          ></SortOptions>
+          <div className="todo-add">
+            <TaskBar addTodo={this.addTodo} />
+          </div>
+          <hr/>
+          <div className="todo-search">
+            <SortOptions
+              options={["name", "date", "priority level"]}
+              sortTodo={this.sortTodo}
+            ></SortOptions>
+          </div>
           <List
             todos={todos}
             checkTodo={this.checkTodo}
