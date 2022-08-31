@@ -42,11 +42,9 @@ class ListItem extends Component<Props> {
             checked={isDone}
             onChange={this.handleChange}
           />
-          <span>{`   ${title}  ${addedTime}`}</span>
+          <span>{` ${title} | ${addedTime}`}</span>
         </label>
-        <button className="btn btn-danger" onClick={this.handleClick}>
-          Delete
-        </button>
+        <button className="btn btn-danger" onClick={this.handleClick}>X</button>
       </li>
     );
   }
