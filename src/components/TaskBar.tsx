@@ -53,10 +53,15 @@ class TaskBar extends Component<Props,State> {
         <div className="task-bar">
           <input
             type="text"
-            placeholder="Please enter your the name of your task"
+            placeholder="Enter New Task Name"
             onKeyUp={this.add}
+            maxLength={100}
             />
-            <PriorityLevelOption setPriorityLevel={this.getPriorityLevel} proorityLevels={[{level:1, PriorityLevelName:'urgent'}, {level:2, PriorityLevelName:'normal'},  {level:3, PriorityLevelName:'low'}]}></PriorityLevelOption>
+            <PriorityLevelOption setPriorityLevel={this.getPriorityLevel}
+              proorityLevels={[{level:1, PriorityLevelName:'LOW'},
+              {level:2, PriorityLevelName:'NORMAL'},
+              {level:3, PriorityLevelName:'HIGH'}]}
+            ></PriorityLevelOption>
         </div>
     );
   }
