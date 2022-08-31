@@ -1,9 +1,16 @@
-.level-1{
+.level-1 {
     background-color: #E8F708;
 }
-.level-2{
+.level-2 {
     background-color: #DDA607;
 }
-.level-3{
+.level-3 {
     background-color: #2B82F1;
+}
+
+.priority {
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    height: 28px;
+    border-radius: 4px;
 }
