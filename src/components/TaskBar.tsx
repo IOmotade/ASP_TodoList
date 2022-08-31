@@ -59,7 +59,7 @@ class TaskBar extends Component<Props,State> {
             />
             <PriorityLevelOption setPriorityLevel={this.getPriorityLevel}
               proorityLevels={[{level:1, PriorityLevelName:'LOW'},
-              {level:2, PriorityLevelName:'NORMAL'},
+              {level:2, PriorityLevelName:'MEDIUM'},
               {level:3, PriorityLevelName:'HIGH'}]}
             ></PriorityLevelOption>
         </div>
