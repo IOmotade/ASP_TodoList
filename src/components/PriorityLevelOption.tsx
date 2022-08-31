@@ -24,7 +24,7 @@ class PriorityLevelOption extends Component<Props> {
   };
 
   render() {
-    return <select onChange={this.onOptionChange}>{this.getOptions()}</select>;
+    return <select onChange={this.onOptionChange} className="priority">{this.getOptions()}</select>;
   }
 }
 
