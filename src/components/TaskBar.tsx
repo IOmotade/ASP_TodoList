@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./TaskBar.css";
 import { nanoid } from "nanoid";
 import PriorityLevelOption from "./PriorityLevelOption";
@@ -9,14 +9,8 @@ interface Props {
   addTodo: (todoObj: TodoObJ) => void;
 }
 
-interface State{
-  priorityLevel:string
-}
-
-class TaskBar extends Component<Props,State> {
-  state={
-      priorityLevel:'1'
-    }
+function TaskBar(props: Props): React.ReactElement {
+  const [priorityLevel, setPriorityLevel] = useState("1");
 
   //Triggered when users enter anything in the TaskBar
   //First, it checks whether the Users hit Enter Key or do not enter text value
@@ -25,7 +19,7 @@ class TaskBar extends Component<Props,State> {
   //to add the new task to the Todo List
   //Finally, after the new task has been added to the Todo List
   //it would clear the TaskBar
-  add = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const add = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const { target, key } = event;
     let value = (target as HTMLTextAreaElement).value;
     if (key !== "Enter" || value.trim().length === 0) return;
@@ -36,35 +30,35 @@ class TaskBar extends Component<Props,State> {
       title: value,
       isDone: false,
       addedTime: new Date().toLocaleString(),
-      priorityLevel:this.state.priorityLevel
+      priorityLevel: priorityLevel,
+      subTasks:[]
     };
-    this.props.addTodo(todoObj);
+    props.addTodo(todoObj);
 
     (event.target as HTMLInputElement).value = "";
   };
 
-  getPriorityLevel =(newLevel:string)=>{
-    const newState = {priorityLevel:newLevel}
-    this.setState(newState)
-  }
+  const getPriorityLevel = (newLevel: string) => {
+    setPriorityLevel(newLevel);
+  };
 
-  render() {
-    return (
-        <div className="task-bar">
-          <input
-            type="text"
-            placeholder="Enter New Task Name"
-            onKeyUp={this.add}
-            maxLength={100}
-            />
-            <PriorityLevelOption setPriorityLevel={this.getPriorityLevel}
-              proorityLevels={[{level:1, PriorityLevelName:'LOW'},
-              {level:2, PriorityLevelName:'MEDIUM'},
-              {level:3, PriorityLevelName:'HIGH'}]}
-            ></PriorityLevelOption>
-        </div>
-    );
-  }
+  return (
+    <div className="task-bar">
+      <input
+        type="text"
+        placeholder="Enter a New Task"
+        onKeyUp={add}
+      />
+      <PriorityLevelOption
+        setPriorityLevel={getPriorityLevel}
+        proorityLevels={[
+          { level: 1, PriorityLevelName: "LOW" },
+          { level: 2, PriorityLevelName: "MEDIUM" },
+          { level: 3, PriorityLevelName: "HIGH" },
+        ]}
+      ></PriorityLevelOption>
+    </div>
+  );
 }
 
 export default TaskBar;

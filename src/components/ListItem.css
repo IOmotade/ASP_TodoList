@@ -3,7 +3,9 @@ li {
   height: 36px;
   line-height: 36px;
   padding: 0 5px;
-  border-bottom: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 1px;
+  cursor: pointer;
 }
 
 li label {
@@ -32,6 +34,11 @@ li:last-child {
   border-bottom: none;
 }
 
+li:hover {
+  color: #fff;
+  background-color: grey;
+}
+
 .level-1{
   background-color: yellowgreen;
 }
@@ -40,9 +47,4 @@ li:last-child {
 }
 .level-3{
   background-color: orange;
-}
-
-li:hover {
-  color: #fff;
-  background-color: grey;
 }

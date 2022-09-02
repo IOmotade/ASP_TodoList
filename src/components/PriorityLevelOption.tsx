@@ -1,31 +1,32 @@
-import { Component } from "react";
-import './PriorityLevelOption.css'
+import React from "react";
+import "./PriorityLevelOption.css";
 interface Props {
   proorityLevels: Array<PriorityLevelObj>;
-  setPriorityLevel:(newLEvel:string)=>void;
+  setPriorityLevel: (newLEvel: string) => void;
 }
 
-class PriorityLevelOption extends Component<Props> {
 
-    onOptionChange = (event:React.ChangeEvent<HTMLSelectElement>)=>{
-         console.log(event.target.value);
-         this.props.setPriorityLevel(event.target.value)
-    }
+function PriorityLevelOption(props: Props): React.ReactElement {
+  const onOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(event.target.value);
+    props.setPriorityLevel(event.target.value);
+  };
 
-  getOptions = () => {
-    const options = this.props.proorityLevels.map((level) => {
+  const getOptions = () => {
+    const options = props.proorityLevels.map((level) => {
       return (
-        <option value={level.level} className={`level-${level.level}`} key={level.PriorityLevelName}>
+        <option
+          value={level.level}
+          className={`level-${level.level}`}
+          key={level.PriorityLevelName}
+        >
           {level.level}: {level.PriorityLevelName}
         </option>
       );
     });
-    return options
+    return options;
   };
-
-  render() {
-    return <select onChange={this.onOptionChange} className="priority">{this.getOptions()}</select>;
-  }
+  return <select className="select-menu" onChange={onOptionChange}>{getOptions()}</select>;
 }
 
 export default PriorityLevelOption;
