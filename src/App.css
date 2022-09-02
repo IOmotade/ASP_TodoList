@@ -1,8 +1,7 @@
 body {
-  background: #fff;
-  padding: 10px;
+    background: #fff;
 }
-  
+
 .btn {
   display: inline-block;
   padding: 4px 12px;
@@ -35,6 +34,7 @@ body {
   width: 1000px;
   margin: 0 auto;
 }
+
 .todo-container .todo-wrap {
   padding: 10px;
   border: 1px solid #ddd;
@@ -47,7 +47,7 @@ body {
   padding-bottom: 10px;
 }
 
-.todo-search {
+.todo-sort {
   text-align: center;
   padding-top: 10px;
 }
