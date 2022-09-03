@@ -32,7 +32,8 @@ function ListItem(props: Props): React.ReactElement {
   //The function first pops a window asking whether the user really wants to delete the task
   //And if the user click ok, it would call deleteTodo function in App component
   //with the id of that task to remove the task from the Todo List
-  const handleClick = () => {
+  const handleClick = (e:React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation()
     if (!window.confirm("Are you sure you want to delete this task?")) return;
     props.deleteTodo(props.id);
   };
@@ -40,6 +41,7 @@ function ListItem(props: Props): React.ReactElement {
   const { title, isDone, addedTime, priorityLevel } = props;
   return (
     <li className={`level-${priorityLevel}`} onClick={()=>{
+      console.log("clicked")
       props.openModalAndSetTitleId(props.title, props.id)}}>
       <label>
         <input type="checkbox" checked={isDone} onChange={handleChange} onClick={(e)=>{e.stopPropagation()}}/>

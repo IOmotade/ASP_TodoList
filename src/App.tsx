@@ -14,6 +14,7 @@ const App = () => {
   const [modalItemId, setModalItemId] = useState<string>("");
   const [userInput, setUserInput] = useState("");
 
+  console.log(openModal)
   const openModalAndSetTitle = (title: string, id: string) => {
     setModalItemTitle(title);
     setOpenModal(true);
@@ -30,7 +31,10 @@ const App = () => {
 
   const getSubTasks = (id:string)=>{
     const target = todos.find((todo) => todo.id === id)!;
-    return target.subTasks!
+    if(!target){
+      return []
+    }
+    return target.subTasks
   }
 
   const changeTitle = (newTitle: string, id: string) => {
@@ -71,6 +75,7 @@ const App = () => {
   const deleteTodo = (id: string) => {
     const newTodos: Array<TodoObJ> = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
+    
   };
 
   //Set all isDone value of TodoObjs in todos array to argument isDone

@@ -19,7 +19,7 @@ interface Props {
 
 const Modal = (props: Props) => {
   const newTitle = useRef<HTMLInputElement>(null);
-
+  console.log(newTitle.current);
   // useEffect(()=>{
 
   // })
@@ -61,7 +61,10 @@ const Modal = (props: Props) => {
           </button>
           <button
             onClick={() => {
-              props.changeTodos(newTitle.current!.value, props.id);
+              let enteredName = newTitle.current!.value.trim();
+              let name = enteredName === "" ? props.title : enteredName;
+
+              props.changeTodos(name, props.id);
               props.setOpenModal(false);
             }}
           >
