@@ -177,7 +177,6 @@ const App = () => {
           />
         </div>
       </div>
-<!--  When openModal is false, the Modal Component will not show      -->
       {openModal && (
         <Modal
           setOpenModal={setOpenModal}
