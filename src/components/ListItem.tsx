@@ -13,7 +13,7 @@ interface Props {
   checkTodo: (id: string, isDone: boolean) => void;
   //Called in handleClick when user click on delete bottom next to a task
   deleteTodo: (id: string) => void;
-
+  //called when users click on any of the ListItem. It will open the modal and set the modal title to the title of the ListItem clicked
   openModalAndSetTitleId:(title:string,id:string)=>void
 
 }
@@ -29,6 +29,7 @@ function ListItem(props: Props): React.ReactElement {
   };
 
   //Triggered when the user click on delete bottom next to a task
+  //The function will stop event propagation as clicking on the delete button should not open the modal
   //The function first pops a window asking whether the user really wants to delete the task
   //And if the user click ok, it would call deleteTodo function in App component
   //with the id of that task to remove the task from the Todo List
