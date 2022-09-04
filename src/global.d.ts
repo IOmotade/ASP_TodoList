@@ -9,12 +9,16 @@ interface TodoObJ {
   isDone: boolean;
   //The date and time at which the task has been added to the Todo List
   addedTime: string;
+  //The priority level of the task
   priorityLevel:string;
+  //Array of string that records the subtasks of the task
   subTasks:string[]
 }
 
-
+//The interface that defines the properties used to create a priority level in the application
 interface PriorityLevelObj{
+  //The level of a priority
   level:number
+  //The name of that priority level
   PriorityLevelName:string
 }
