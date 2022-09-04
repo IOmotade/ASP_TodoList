@@ -8,19 +8,27 @@ import Modal from "./components/Modal";
 import SearchBar from "./components/SearchBar";
 
 const App = () => {
+  //An array that stores all todo tasks
   const [todos, setTodos] = useState<Array<TodoObJ>>([]);
+  //A boolean used to check whether to open the modal or not
   const [openModal, setOpenModal] = useState<boolean>(false);
+  //A string used in modal to show the task name
   const [modalItemTitle, setModalItemTitle] = useState<string>("");
+  //An ID used in modal to identify which task that the modal will need to display 
   const [modalItemId, setModalItemId] = useState<string>("");
+  //A string to record what the user has input
   const [userInput, setUserInput] = useState("");
 
-  console.log(openModal)
+  //Open and modal and set the modal title and item id to correct display the task in the modal
   const openModalAndSetTitle = (title: string, id: string) => {
     setModalItemTitle(title);
     setOpenModal(true);
     setModalItemId(id);
   };
 
+  //Add sub tasks to a todo object
+  //First retrieve the task with the id, then add task name to its subTask
+  //then update the todos
   const addSubTask = (taskName:string,id:string)=>{
     const newTodos = [...todos];
     const target = newTodos.find((todo) => todo.id === id);
@@ -29,6 +37,8 @@ const App = () => {
 
   }
 
+  //get the subtasks of a todo object with id
+  //If it cannot find the task with the id, it will return an empty array
   const getSubTasks = (id:string)=>{
     const target = todos.find((todo) => todo.id === id)!;
     if(!target){
@@ -37,6 +47,9 @@ const App = () => {
     return target.subTasks
   }
 
+  //used to change the title of a task 
+  //First reetrieve the task with the id, update its title to newTitle
+  //then update the todos
   const changeTitle = (newTitle: string, id: string) => {
     const newTodos = [...todos];
     const target = newTodos.find((todo) => todo.id === id);
@@ -100,6 +113,10 @@ const App = () => {
     setTodos(newTodos);
   };
 
+  //Sort todos array
+  //First, it will make a copy of the todos array
+  //then sort it arrcoding to the option arguments
+  //Finally, it will update the todos array with the sorted array
   const sortTodo = (option: string) => {
     const newTodos = [...todos];
     switch (option) {
@@ -124,12 +141,12 @@ const App = () => {
     setTodos(newTodos);
   };
 
+  //update userInput with input argument
   const changeUserInput = (input: string) => {
-    console.log(input);
     setUserInput(input);
   };
 
-  //   render() {
+
 
   return (
     <div>
@@ -160,6 +177,7 @@ const App = () => {
           />
         </div>
       </div>
+<!--  When openModal is false, the Modal Component will not show      -->
       {openModal && (
         <Modal
           setOpenModal={setOpenModal}
@@ -170,10 +188,10 @@ const App = () => {
           addSubTask={addSubTask}
         ></Modal>
       )}
-      {/* <button onClick={()=>{setOpenModal(true)}}>open</button> */}
+     
     </div>
   );
-  //   }
+  
 };
 
 export default App;
