@@ -10,15 +10,18 @@ interface Props {
   checkTodo: (id: string, isDone: boolean) => void;
   //An event handler passed from App component to ListItem via List
   deleteTodo: (id: string) => void;
-
+  //A function used to open modal and set modal title. Defined in App and used in ListItem, pass it to List because it is between them
   openModalAndSetTitleId: (title: string, id: string) => void;
 
+  //A string used to find that task that contains a specific string
   filter: string;
 }
 
 const List = (props: Props): React.ReactElement => {
+  //get all ListItems
+  //If the filter is empty, then it will simply return ListItems created by all todo objects
+  //Otherwise, it will extract all the todo objects whose titles contain the filter string, then build ListItems by those todo objects
   const getListItems = () => {
-    console.log(props.filter)
     let todos: TodoObJ[];
     if (props.filter === "") {
       todos = props.todos;
