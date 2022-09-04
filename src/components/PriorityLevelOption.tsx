@@ -1,14 +1,17 @@
 import React from "react";
 import "./PriorityLevelOption.css";
 interface Props {
+  //An array of PriorityLevelObj to display the different priority levels and their names
   proorityLevels: Array<PriorityLevelObj>;
+  //A function used to change the current priority level that will be added to new todo objects
   setPriorityLevel: (newLEvel: string) => void;
 }
 
 
 function PriorityLevelOption(props: Props): React.ReactElement {
+  //triggered when user change the option dropdown
+  //it will set the priority level to the one selected by users
   const onOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target.value);
     props.setPriorityLevel(event.target.value);
   };
 
