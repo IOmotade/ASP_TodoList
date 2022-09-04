@@ -2,31 +2,17 @@
 import "./SortOptions.css"
 
 interface Props {
+ //an array of sort option names
   options: Array<string>;
+  //a function to sort all todo objects
   sortTodo: (option: string) => void;
 }
 
-// class SortOptions extends Component<Props> {
-//   getAllOptions=()=> {
-//     const allOptions = this.props.options.map((option) => {
-//       return <option key={option} value={option}>{option}</option>;
-//     });
-//     const firstOption = <option key={'Sory By'}>--Sort By--</option>;
-//     return [firstOption].concat(allOptions);
-//   }
 
-//   handleSelectChange=(event: React.ChangeEvent<HTMLSelectElement>)=>{
-//       event.preventDefault()
-//       const selectedOption = event.target.value;
-//       this.props.sortTodo(selectedOption)
-//   }
-
-//   render() {
-//     return <select onChange={this.handleSelectChange}>{this.getAllOptions()}</select>;
-//   }
-// }
 
 function SortOptions(props: Props): React.ReactElement {
+ //return all options in the sort option dropdown
+ //it will add "Sort By " to each option name
   const getAllOptions = () => {
     const allOptions = props.options.map((option) => {
       return (
@@ -39,6 +25,9 @@ function SortOptions(props: Props): React.ReactElement {
     return [firstOption].concat(allOptions);
   };
 
+  //triggered when users change the option dropdown
+ //it will extract the option name selected by users
+ //then call sortTodo with the option name to sort the todo objects
   const onSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
     const selectedOption = event.target.value;
